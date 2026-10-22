@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -39,13 +39,8 @@ def home():
                 connection.commit()
             finally:
                 connection.close()
-
-            transaction = {
-                "description": description,
-                "amount": amount,
-                "category": category,
-                "date": date,
-            }
+        return redirect(url_for("home"), code=303)
+            
     
     connection = sqlite3.connect("finance.db")
     transactions = connection.execute("SELECT description, amount, category, transaction_date ""FROM transactions ORDER BY transaction_date DESC, id DESC").fetchall()
