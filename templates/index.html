@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
+<section class="entry-card">
 <h1>Finance Tracker</h1>
-<form method="POST">
+<form method="POST" class="transaction-form">
 <label>
     Description 
     <input name="description" required> 
@@ -28,9 +29,9 @@
     <input name="date" type="date" required>
   </label>
 
-  <button type="submit">Add transaction</button>
+  <button class="add" type="submit">Add transaction</button>
 </form>
-
+</section>
 {% if error %}
 <p> {{error}} </p>
 {% endif %}
