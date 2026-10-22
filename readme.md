@@ -23,7 +23,7 @@ These instructions assume Ubuntu on WSL.
 1. Clone the repository:
 
    ```bash
-   git clone YOUR_REPOSITORY_URL
+   git clone https://github.com/sn2368/finance-tracker
    cd finance-tracker
    ```
 
