@@ -46,11 +46,14 @@ def home():
                 "category": category,
                 "date": date,
             }
-
+    
+    connection = sqlite3.connect("finance.db")
+    transactions = connection.execute("SELECT description, amount, category, transaction_date ""FROM transactions ORDER BY transaction_date DESC, id DESC").fetchall()
+    connection.close()
     return render_template(
         "index.html",
         transaction=transaction,
-        error=error,
+        error=error, transactions=transactions,
     )
 
 

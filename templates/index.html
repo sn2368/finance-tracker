@@ -35,9 +35,18 @@
 <p> {{error}} </p>
 {% endif %}
 
-{% if transaction %}
-<h2> Transaction received </h2>
-<p>{{ transaction.description }} - {{ "%.2f"|format(transaction.amount) }} ({{ transaction.category }}) on {{ transaction.date }}</p>
+<h2>Transactions</h2>
+
+{% if transactions %}
+  <ul>
+    {% for row in transactions %}
+      <li>
+        {{ row[0] }} — {{ row[1] }} ({{ row[2] }}) on {{ row[3] }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No transactions yet.</p>
 {% endif %}
 
 </body>
