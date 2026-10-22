@@ -37,17 +37,33 @@
 
 <h2>Transactions</h2>
 
-{% if transactions %}
-  <ul>
-    {% for row in transactions %}
-      <li>
-        {{ row[0] }} — {{ row[1] }} ({{ row[2] }}) on {{ row[3] }}
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No transactions yet.</p>
-{% endif %}
+<div class="table-wrapper">
+  <table>
+    <caption>Saved transactions</caption>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in transactions %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ "%.2f"|format(row[1]) }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="4">No transactions yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 </body>
 </html>
