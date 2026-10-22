@@ -8,6 +8,37 @@
 </head>
 <body>
 <h1>Finance Tracker</h1>
-<p>Your spending tracker starts here</p>
+<form method="POST">
+<label>
+    Description 
+    <input name="description" required> 
+  </label>
+<label>
+    Amount
+    <input name="amount" type="number" min="0.01" step="0.01" required>
+  </label>
+
+  <label>
+    Category
+    <input name="category" required>
+  </label>
+
+  <label>
+    Date
+    <input name="date" type="date" required>
+  </label>
+
+  <button type="submit">Add transaction</button>
+</form>
+
+{% if error %}
+<p> {{error}} </p>
+{% endif %}
+
+{% if transaction %}
+<h2> Transaction received </h2>
+<p>{{ transaction.description }} - {{ "%.2f"|format(transaction.amount) }} ({{ transaction.category }}) on {{ transaction.date }}</p>
+{% endif %}
+
 </body>
 </html>
